@@ -1,13 +1,15 @@
 import { RotatingLines } from "react-loader-spinner";
-import chartUp from "../../assets/chart-Up.svg"
-import chartDown from "../../assets/chart-down.svg"
+import chartUp from "../../assets/chart-Up.svg";
+import chartDown from "../../assets/chart-down.svg";
+
+import styles from "../modules/TableCoin.module.css";
 
 function TableCoin({ coins, isLoading }) {
-    console.log(coins);
+
     return (
-        <div>
+        <div className={styles.container}>
             {isLoading ? <RotatingLines strokeColor="#3874ff" strokeWidth="2" /> :
-                <table>
+                <table className={styles.table}>
                     <thead>
                         <tr>
                             <th>Coin</th>
@@ -38,7 +40,7 @@ const TabelRow = ({ coins: { id, name, image, symbol, total_volume, current_pric
     return (
         <tr key={id}>
             <td>
-                <div>
+                <div className={styles.symbol}>
                     <img src={image} alt="alt" />
                     <span>{symbol.toUpperCase()}</span>
                     {/* symbol be horoofe bozorg */}
@@ -48,7 +50,8 @@ const TabelRow = ({ coins: { id, name, image, symbol, total_volume, current_pric
             {/* قیمت جاری - toLocaleString() میاد 3رقم 3رقم جدا میکنه اعداد رو */}
             <td>${current_price.toLocaleString()}</td>
             {/* price-change  درصد تغییرات | toFixed(2) یعنی تا 2 رقم اعشار نشون بده*/}
-            <td>{price_change.toFixed(2)}%</td>
+            <td className={price_change > 0 ? styles.success : styles.error}>{price_change.toFixed(2)}%</td>
+            {/* bayad pricechange rangesh dar + or - taghir kone pas class midim */}
             <td>{total_volume.toLocaleString()}</td>
             {/* Chart + or - ro moshakhas kardim */}
             <td> <img src={price_change > 0 ? chartUp : chartDown} alt={name} /></td>
