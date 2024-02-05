@@ -4,7 +4,9 @@ import TableCoin from "../modules/TableCoin";
 import { getCoinList } from "../../Services/cryptoApi";
 
 function Homepage() {
+    // [] yaeni onmounting
     const [coins, setCoins] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(
         () => {
@@ -14,6 +16,8 @@ function Homepage() {
                 const res = await fetch(getCoinList());
                 const json = await res.json();
                 setCoins(json);
+                setIsLoading(false);
+                //ta vaghti update shod betoonim tagirat Eemal konim
             }
             getData();
         }, []);
@@ -21,7 +25,7 @@ function Homepage() {
 
         <div>
             {/* Props midim state ro be TabelCoin - Ta ounja namayesh bedimesh */}
-            <TableCoin coins={coins} />
+            <TableCoin coins={coins} isLoading={isLoading} />
 
         </div>
 
