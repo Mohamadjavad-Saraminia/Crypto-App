@@ -21,7 +21,6 @@ function Homepage() {
 
         <div>
             {/* Props midim state ro be TabelCoin - Ta ounja namayesh bedimesh */}
-
             <TableCoin coins={coins} />
 
         </div>
