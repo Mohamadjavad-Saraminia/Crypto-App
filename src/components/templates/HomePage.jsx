@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react"
 import TableCoin from "../modules/TableCoin";
 import { getCoinList } from "../../Services/cryptoApi";
+import Pagination from "../modules/Pagination";
 
 function Homepage() {
     // [] yaeni onmounting
@@ -24,6 +25,8 @@ function Homepage() {
     return (
 
         <div>
+
+            <Pagination />
             {/* Props midim state ro be TabelCoin - Ta ounja namayesh bedimesh */}
             <TableCoin coins={coins} isLoading={isLoading} />
 

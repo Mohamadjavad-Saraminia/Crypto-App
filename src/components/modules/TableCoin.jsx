@@ -36,7 +36,8 @@ export default TableCoin
 
 // destructure coins
 // یک component دیگه درون tabelcoins به نام Tabelrowساختیم تا از تکرار جلوگیری کنیم
-const TabelRow = ({ coins: { id, name, image, symbol, total_volume, current_price, price_change_percentage_24h: price_change }, }) => {
+const TabelRow = ({ coins: { id, name, image, symbol, total_volume, current_price, price_change_percentage_24h: price_change },
+}) => {
     return (
         <tr key={id}>
             <td>
