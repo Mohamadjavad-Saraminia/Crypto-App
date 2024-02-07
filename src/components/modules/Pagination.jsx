@@ -1,7 +1,7 @@
-import { useState } from "react"
 
-function Pagination() {
-    const [page, setPage] = useState(1);
+
+function Pagination({ page, setPage }) {
+
 
     const perviousHandeler = () => {
         if (page <= 1) return;
@@ -9,7 +9,8 @@ function Pagination() {
     }
 
     const nextHandeler = () => {
-        (page >= 10 ? setPage((page) => page + 1) : setPage(0));
+        if (page >= 10) return;
+        setPage((page) => page + 1);
     }
     // Choon Be Andaze 10 ta perpage=20 | Element darim
 
@@ -20,11 +21,11 @@ function Pagination() {
             <p style={{ color: page == 2 ? "red" : "inherit" }} >2</p>
 
             {
-                page > 2 && page < 9 && (<>
-                    <span>...</span>
-                    <p >{page}</p>
-                </>)
-            }
+                page > 2 && page < 9 && (
+                    <>
+                        <span>...</span>
+                        <p >{page}</p>
+                    </>)}
             <span>...</span>
             <p>9</p>
             <p>10</p>
