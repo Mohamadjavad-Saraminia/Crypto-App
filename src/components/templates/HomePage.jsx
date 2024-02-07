@@ -28,9 +28,11 @@ function Homepage() {
 
         <div>
 
-            <Pagination page={page} setPage={setPage} />
+
             {/* Props midim state ro be TabelCoin - Ta ounja namayesh bedimesh */}
             <TableCoin coins={coins} isLoading={isLoading} />
+            {/* واسه اینکه pagination پایین نشون داده بشه */}
+            <Pagination page={page} setPage={setPage} />
 
         </div>
 
