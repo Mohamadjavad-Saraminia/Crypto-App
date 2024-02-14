@@ -18,11 +18,16 @@ function Homepage() {
             //getCoinList For Manage Apis
             setIsLoading(true);
             const getData = async () => {
-                const res = await fetch(getCoinList(page, currency));
-                const json = await res.json();
-                setCoins(json);
-                setIsLoading(false);
-                //ta vaghti update shod betoonim tagirat Eemal konim
+                try {
+                    const res = await fetch(getCoinList(page, currency));
+                    const json = await res.json();
+                    setCoins(json);
+                    setIsLoading(false);
+                    //ta vaghti update shod betoonim tagirat Eemal konim
+                } catch (error) {
+                    console.log(error);
+
+                }
             }
             getData();
         }, [page, currency]);

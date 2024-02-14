@@ -20,4 +20,16 @@ module.exports = {
     "react/prop-types": "off"
 
   },
+
+  {
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        // قوانین ESLint خود را اینجا قرار دهید
+      }
+    }
+  ]
+}
+  
 }
