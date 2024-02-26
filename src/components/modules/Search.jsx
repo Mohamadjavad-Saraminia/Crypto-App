@@ -5,13 +5,17 @@ function Search({ currency, setCurrency, }) {
     //آنچه که کاربر وارد میکند
     const [text, setText] = useState("");
     const [coins, setCoins] = useState([]);
+    console.log(coins);
     //Logic Search and Get Search Api From Coingiecko Server
     useEffect(() => {
 
         //bara Abort kardan va handel kardane Memory Leak & Clinup
         const controler = new AbortController();
 
-        if (!text) return;  // Bara inke To updating Faghat kaar kone
+
+        // Bara inke To updating Faghat kaar kone
+        setCoins([]);
+        if (!text) return;
         const search = async () => {
             try {
                 const res = await fetch(searchCoin(text), { signal: controler.signal });
@@ -23,7 +27,6 @@ function Search({ currency, setCurrency, }) {
                 if (error.name != "AbortError") {
                     alert(error.message)
                 }
-
             }
 
         };
@@ -39,8 +42,15 @@ function Search({ currency, setCurrency, }) {
                 <option value="usd">USD</option>
                 <option value="eur">EUR</option>
                 <option value="jpy">JPY</option>
-
             </select>
+            <div>
+                <ul>
+                    {coins.map(coin => <li key={coin.id}>
+                        <img src={coin.thumb} alt={coin.name} />
+                        <p>{coin.name}</p>
+                    </li>)}
+                </ul>
+            </div>
         </div>
     )
 }
