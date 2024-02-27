@@ -54,15 +54,18 @@ function Search({ currency, setCurrency, }) {
                 <option value="eur">EUR</option>
                 <option value="jpy">JPY</option>
             </select>
-            <div className={styles.searchResult}>
-                <ul>
-                    {isloading && <RotatingLines width="50px" height="50px" strokeWidth="3" strokeColor="#3874ff" />}
-                    {coins.map(coin => <li key={coin.id}>
-                        <img src={coin.thumb} alt={coin.name} />
-                        <p>{coin.name}</p>
-                    </li>)}
-                </ul>
-            </div>
+            {/* !! Vase ine nateje hasele Bolian type bashe */}
+            {(!!coins.length || isloading) && (
+                <div className={styles.searchResult}>
+                    <ul>
+                        {isloading && <RotatingLines width="50px" height="50px" strokeWidth="3" strokeColor="#3874ff" />}
+                        {coins.map(coin => <li key={coin.id}>
+                            <img src={coin.thumb} alt={coin.name} />
+                            <p>{coin.name}</p>
+                        </li>)}
+                    </ul>
+                </div>
+            )}
         </div>
     )
 }
