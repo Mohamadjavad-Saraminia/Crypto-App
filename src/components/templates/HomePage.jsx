@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useEffect } from "react"
-import TableCoin from "../modules/TableCoin";
 import { getCoinList } from "../../Services/cryptoApi";
+
+import TableCoin from "../modules/TableCoin";
 import Pagination from "../modules/Pagination";
 import Search from "../modules/Search";
+import Chart from "../modules/Chart";
 
 function Homepage() {
     // [] yaeni onmounting
@@ -11,6 +13,7 @@ function Homepage() {
     const [isLoading, setIsLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [currency, setCurrency] = useState("usd");
+    const [chart, setChart] = useState(null);
 
     useEffect(
         () => {
@@ -37,9 +40,11 @@ function Homepage() {
 
             <Search currency={currency} setCurrency={setCurrency} />
             {/* Props midim state ro be TabelCoin - Ta ounja namayesh bedimesh */}
-            <TableCoin coins={coins} isLoading={isLoading} />
+            <TableCoin coins={coins} isLoading={isLoading} setChart={setChart} />
             {/* واسه اینکه pagination پایین نشون داده بشه */}
             <Pagination page={page} setPage={setPage} />
+            {/* Yaeni age chart khastim Tebghe state nshoon bede */}
+            {!!chart && <Chart chart={chart} setChart={setChart} />}
 
         </div>
 

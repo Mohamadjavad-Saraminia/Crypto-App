@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { searchCoin } from "../../Services/cryptoApi";
 import { RotatingLines } from "react-loader-spinner";
 import styles from "../modules/Search.module.css";
@@ -11,7 +11,6 @@ function Search({ currency, setCurrency, }) {
     console.log(coins);
     //Logic Search and Get Search Api From Coingiecko Server
     useEffect(() => {
-
         //bara Abort kardan va handel kardane Memory Leak & Clinup
         const controler = new AbortController();
         // Bara inke To updating Faghat kaar kone
@@ -70,4 +69,4 @@ function Search({ currency, setCurrency, }) {
     )
 }
 
-export default Search
+export default Search   

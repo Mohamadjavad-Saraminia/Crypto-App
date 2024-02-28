@@ -4,7 +4,7 @@ import chartDown from "../../assets/chart-down.svg";
 
 import styles from "../modules/TableCoin.module.css";
 
-function TableCoin({ coins, isLoading }) {
+function TableCoin({ coins, isLoading, setChart }) {
 
     return (
         <div className={styles.container}>
@@ -24,7 +24,7 @@ function TableCoin({ coins, isLoading }) {
                     {/* به جای ایجاد یک component مجزا اومدیم پایین منطق کد رو نوشتیم و درون خود پیچ نوشتیمش */}
                     <tbody>
                         {coins.map(coins =>
-                            <TabelRow coins={coins} key={coins.id} />
+                            <TabelRow coins={coins} key={coins.id} setChart={setChart} />
                         )}
                     </tbody>
                 </table>}
@@ -37,11 +37,16 @@ export default TableCoin
 // destructure coins
 // یک component دیگه درون tabelcoins به نام Tabelrowساختیم تا از تکرار جلوگیری کنیم
 const TabelRow = ({ coins: { id, name, image, symbol, total_volume, current_price, price_change_percentage_24h: price_change },
+    setChart,
 }) => {
+    const showHandeler = () => {
+        setChart(true);
+    }
     return (
         <tr key={id}>
             <td>
-                <div className={styles.symbol}>
+                {/*  Be in Tag Div Baraye Neveshtane manteghe Chart Shishei OnClick dadim */}
+                <div className={styles.symbol} onClick={showHandeler}>
                     <img src={image} alt="alt" />
                     <span>{symbol.toUpperCase()}</span>
                     {/* symbol be horoofe bozorg */}
